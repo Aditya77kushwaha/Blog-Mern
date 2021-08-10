@@ -22,27 +22,25 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// //create blog
-// router.post("/", async (req, res) => {
-//   try {
-//     const post = new Blog({
-//       title: req.body.title,
-//       desc: req.body.desc,
-//     });
-//     const savedBlog = await post.save();
-//     res.json(savedBlog);
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// });
+//delete blog
+router.delete("/:id", async (req, res) => {
+  try {
+    const blog = await Blog.deleteOne({ _id: req.params.id });
+    res.status(204).send()
+  } catch (error) {
+    res.status(404).send({ error: "Blog doesn't exist!" });
+  }
+});
 
-// //delete blog
-// router.delete("/:id", async (req, res) => {
-//   try {
-//     const blog = await Blog.deleteOne({ _id: req.params.id });
-//     res.status(204).send()
-//   } catch (error) {
-//     res.status(404).send({ error: "Post doesn't exist!" });
-//   }
-// });
+//get user's all blogs
+
+router.get("/profile/:username", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    const posts = await Blog.find({ userId: user._id });
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

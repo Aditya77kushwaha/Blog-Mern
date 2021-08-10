@@ -1,4 +1,6 @@
 import "./Header.css";
+import { Link } from "react-router-dom";
+
 
 const Nav = () => {
   return (
@@ -6,18 +8,18 @@ const Nav = () => {
       <nav>
         <ul>
           <li>
-            <a href="#home">Home</a>
+            <Link to="home">Home</Link>
           </li>
           <li>
-            <a href="#news">Blogs</a>
+            <Link to="blogs">My Blogs</Link>
           </li>
           <li>
-            <a href="#contact">Profile</a>
+            <Link to="write">Write</Link>
           </li>
           <li style={{ float: "right" }}>
-            <a className="active" href="#about">
-              About
-            </a>
+            <Link className="active" to="profile">
+              Profile
+            </Link>
           </li>
         </ul>
       </nav>
