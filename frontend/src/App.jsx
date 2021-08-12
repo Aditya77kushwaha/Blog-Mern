@@ -4,10 +4,21 @@ import Homepage from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Profile from "./pages/profile/Profile";
+import Post from "./components/post/Post";
+import post from "./dummyData";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
-    <div className="App" style={{position:"relative",overflowX:"hidden",width:"100vw"}}>
+    <div
+      className="App"
+      style={{
+        position: "relative",
+        width: "100vw",
+        margin: "0",
+        padding:"0"
+      }}
+    >
       <Router>
         <Nav />
         <Switch>
@@ -24,6 +35,11 @@ function App() {
             <Profile />
           </Route>
         </Switch>
+        {/* <Post post={post} />
+        <Post post={post} />
+        <Post post={post} />
+        <Post post={post} /> */}
+        <Footer />
       </Router>
     </div>
   );

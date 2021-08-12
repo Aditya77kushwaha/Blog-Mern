@@ -7,8 +7,8 @@
 [] frontend -
     [] UI - 
             Components - 
-                [] Post -  Blogs
-                [] Footer
+                [x] Post -  Blogs
+                [] Footer - (fix overflow)
                 [] SinglePost - Particular Blog
                 [x] Nav/Header
             Pages (Nav, Header in all pages) - 
@@ -16,8 +16,8 @@
                 [] single - Single Blog (SinglePost Component)
                 [] write - Create a new Blog
                 [] profile - user details
-                [] login 
-                [] register
+                [x] login 
+                [x] register
 
     [] Axios -
         Connect Frontend with Backend
