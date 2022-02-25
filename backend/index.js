@@ -48,5 +48,5 @@ app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 
 app.listen("5000", () => {
-  console.log("Backend is running.");
+  console.log("Backend is running at port 5000");
 });
