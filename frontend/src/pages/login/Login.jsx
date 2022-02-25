@@ -1,42 +1,55 @@
-import "./Login.css";
+import axios from "axios";
+import { useContext, useRef } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
+import "./login.css";
 
 export default function Login() {
-  const handleClick = (e) => {
+  const userRef = useRef();
+  const passwordRef = useRef();
+  const { dispatch, isFetching } = useContext(Context);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("/auth/login", {
+        username: userRef.current.value,
+        password: passwordRef.current.value,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE" });
+    }
   };
 
   return (
     <div className="login">
-      <div className="loginWrapper">
-        <div className="loginLeft">
-          <h3 className="loginLogo">Blogs App</h3>
-          <span className="loginDesc">
-            Write and share your thoughts with around the world !!!
-          </span>
-        </div>
-        <div className="loginRight">
-          <form className="loginBox" onSubmit={handleClick}>
-            <input
-              placeholder="Email"
-              type="email"
-              required
-              className="loginInput"
-            />
-            <input
-              placeholder="Password"
-              type="password"
-              required
-              minLength="6"
-              className="loginInput"
-            />
-            <button className="loginButton" type="submit">
-              Login
-            </button>
-            <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">Register</button>
-          </form>
-        </div>
-      </div>
+      <span className="loginTitle">Login</span>
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <label>Username</label>
+        <input
+          type="text"
+          className="loginInput"
+          placeholder="Enter your username..."
+          ref={userRef}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          className="loginInput"
+          placeholder="Enter your password..."
+          ref={passwordRef}
+        />
+        <button className="loginButton" type="submit" disabled={isFetching}>
+          Login
+        </button>
+      </form>
+      <button className="loginRegisterButton">
+        <Link className="link" to="/register">
+          Register
+        </Link>
+      </button>
     </div>
   );
 }

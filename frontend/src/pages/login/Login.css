@@ -1,92 +1,60 @@
 .login {
-  width: 100%;
-  height: 100%;
-  background-color: #f0f2f5;
+  height: calc(100vh - 50px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+  background-size: cover;
 }
 
-.loginWrapper {
-  width: 70%;
-  height: 70%;
-  display: flex;
-}
-
-.loginLeft,
-.loginRight {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.loginLogo {
+.loginTitle {
   font-size: 50px;
-  font-weight: 800;
-  color: #1775ee;
-  margin-bottom: 10px;
 }
 
-.loginDesc {
-  font-size: 24px;
-}
-
-.loginBox {
-  height: 300px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
+.loginForm {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+
+.loginForm > label {
+  margin: 10px 0;
 }
 
 .loginInput {
-  height: 50px;
-  border-radius: 10px;
-  border: 1px solid gray;
-  font-size: 18px;
-  padding-left: 20px;
-}
-
-.loginInput:focus {
-  outline: none;
+  padding: 10px;
+  background-color: white;
+  border: none;
 }
 
 .loginButton {
-  height: 50px;
-  border-radius: 10px;
-  border: none;
-  background-color: #1775ee;
-  color: white;
-  font-size: 20px;
-  font-weight: 500;
+  margin-top: 20px;
   cursor: pointer;
+  background-color: lightcoral;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.loginButton:focus {
-  outline: none;
-}
-
-.loginButton:disabled {
+.loginButton:disabled{
   cursor: not-allowed;
-}
-
-.loginForgot {
-  text-align: center;
-  color: #1775ee;
+  background-color: rgb(252, 173, 173);
 }
 
 .loginRegisterButton {
-  width: 60%;
-  align-self: center;
-  height: 50px;
-  border-radius: 10px;
-  border: none;
-  background-color: #42b72a;
-  font-size: 20px;
-  color: white !important;
-  font-weight: 500;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: teal;
   cursor: pointer;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
 }
