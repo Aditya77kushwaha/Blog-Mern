@@ -1,30 +1,17 @@
-import "./Header.css";
-import { Link } from "react-router-dom";
+import "./header.css";
 
-
-const Nav = () => {
+export default function Header() {
   return (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="home">Home</Link>
-          </li>
-          <li>
-            <Link to="blogs">My Blogs</Link>
-          </li>
-          <li>
-            <Link to="write">Write</Link>
-          </li>
-          <li style={{ float: "right" }}>
-            <Link className="active" to="profile">
-              Profile
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </>
+    <div className="header">
+      <div className="headerTitles">
+        <span className="headerTitleSm">React & Node</span>
+        <span className="headerTitleLg">Blog</span>
+      </div>
+      <img
+        className="headerImg"
+        src="https://images.pexels.com/photos/1167355/pexels-photo-1167355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        alt=""
+      />
+    </div>
   );
-};
-
-export default Nav;
+}
