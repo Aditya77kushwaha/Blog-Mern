@@ -11,22 +11,35 @@ const path = require("path");
 const cors = require("cors");
 
 dotenv.config();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "https://YOUR_NETLIFY_URL.netlify.app",
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
-  .connect(
-    "mongodb+srv://user123:AWexvgpA3iCdXVSi@cluster0.kvvb1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: true,
-    }
-  )
-  .then(console.log("Connected to MongoDB"))
-  .catch((err) => console.log(err));
+  .connect(process.env.DB_CONNECTION)
+  .then(() => console.log("Connected to DB"))
+  .catch((err) => {
+    console.error(err);
+  });
+
+// mongoose
+//   .connect(
+//     "mongodb+srv://user123:AWexvgpA3iCdXVSi@cluster0.kvvb1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+//     {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//       useCreateIndex: true,
+//       useFindAndModify: true,
+//     }
+//   )
+//   .then(console.log("Connected to MongoDB"))
+//   .catch((err) => console.log(err));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
