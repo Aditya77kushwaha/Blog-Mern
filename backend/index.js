@@ -13,10 +13,7 @@ const cors = require("cors");
 dotenv.config();
 
 app.use(
-  cors({
-    origin: "https://YOUR_NETLIFY_URL.netlify.app",
-    credentials: true,
-  }),
+  cors()
 );
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
