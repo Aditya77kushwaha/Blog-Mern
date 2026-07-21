@@ -8,6 +8,7 @@ export default function Write() {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
+  const API = process.env.REACT_APP_API;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,15 +25,23 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("/upload", data);
-      } catch (err) {}
+        await axios.post(`${API}/api/upload`, data);
+      } catch (err) {
+        console.log(err);
+        console.log(err.response);
+        console.log(err.response?.data);
+      }
     }
     try {
-      console.log(URL.createObjectURL(file));
-      const res = await axios.post(`/posts/new/${user.username}`, newPost);
+      const res = await axios.post(`${API}/api/posts/new/${user.username}`, newPost);
       console.log("Successful");
       window.location.replace("/post/" + res.data._id);
-    } catch (err) {}
+      URL.createObjectURL(file) && console.log(URL.createObjectURL(file));
+    } catch (err) {
+      console.log(err);
+      console.log(err.response);
+      console.log(err.response?.data);
+    }
   };
   return (
     <div className="write">

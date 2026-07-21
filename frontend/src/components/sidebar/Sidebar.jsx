@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 export default function Sidebar() {
+  const API = process.env.REACT_APP_API;
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("/categories");
+      const res = await axios.get(`${API}/api/categories`);
       setCats(res.data);
     };
     getCats();
@@ -22,8 +23,10 @@ export default function Sidebar() {
           alt=""
         />
         <p>
-          I'm a full stack developer well versed in varied tech stacks like MERN
-          stack and Django. I'm also a CP enthusiast competing on some well known sites like Codeforces, Codechef and Atcoder. Do let me know if I can be of any help. 
+          Aditya Kushwaha here. I am a Senior Software Engineer with experience in building concurrent distributed and scalable backend and full-stack software
+          with C++, Java, React.js, and Python. I also create AI/ML and
+          agentic AI solutions using modern LLM frameworks. I'm also a CP
+          enthusiast competing on some well known platforms. Do let me know if I can be of any help.
         </p>
       </div>
       <div className="sidebarItem">
