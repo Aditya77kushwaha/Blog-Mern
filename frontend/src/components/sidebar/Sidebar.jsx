@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
 
+const API = process.env.REACT_APP_API;
+
 export default function Sidebar() {
-  const API = process.env.REACT_APP_API;
   const [cats, setCats] = useState([]);
 
   useEffect(() => {

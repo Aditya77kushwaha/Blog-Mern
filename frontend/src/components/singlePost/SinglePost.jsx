@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./singlePost.css";
 
+const API = process.env.REACT_APP_API;
+  
 export default function SinglePost() {
-  const API = process.env.REACT_APP_API;
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
